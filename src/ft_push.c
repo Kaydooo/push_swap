@@ -47,20 +47,7 @@ void	pushback(t_data *data)
 		if (x == 1)
 			x = get_values(data);
 		if (data->bestvalue == data->b[data->topb])
-		{
-			if (data->correctvalue == data->a[data->topa])
-			{
-				pa(data);
-				x = 1;
-			}
-			else
-			{
-				if (data->correctadd > data->topa / 2)
-					ra(data);
-				else
-					rra(data);
-			}
-		}
+			push_to_a(data, &x);
 		else
 		{
 			if(data->bestindex > data->topb / 2 && data->correctadd > data->topa / 2 && data->correctvalue != data->a[data->topa])
