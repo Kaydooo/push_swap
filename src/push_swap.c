@@ -6,7 +6,7 @@
 /*   By: mal-guna <mal-guna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:08:37 by mal-guna          #+#    #+#             */
-/*   Updated: 2021/11/12 09:30:03 by mal-guna         ###   ########.fr       */
+/*   Updated: 2022/03/25 06:00:52 by mal-guna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if(!argv[0])
+		{
+			free(argv);
+			return 0;
+		}
 		argc = count(argv, &j);
 	}
 	set_struct(&data, argc + 1 - j);
