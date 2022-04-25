@@ -6,7 +6,7 @@
 /*   By: mal-guna <mal-guna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:08:41 by mal-guna          #+#    #+#             */
-/*   Updated: 2021/11/10 14:25:40 by mal-guna         ###   ########.fr       */
+/*   Updated: 2022/04/25 11:47:08 by mal-guna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_atoi(t_data *data, char *str, char **argv, int j)
 		res = (res * 10) + (str[i] - 48);
 		i++;
 	}
-	if (!is_digit(str[i]) && str[i])
+	if ((!is_digit(str[i]) && str[i]) || i > 12)
 		print_and_exit(data, argv, j);
 	if ((res > 2147483647 && sign == 1) || ((res > 2147483648) && (sign == -1)))
 		print_and_exit(data, argv, j);

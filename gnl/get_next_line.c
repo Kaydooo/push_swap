@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal-guna <m3t9mm@gmail.com>                +#+  +:+       +#+        */
+/*   By: mal-guna <mal-guna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 07:27:18 by mal-guna          #+#    #+#             */
-/*   Updated: 2021/11/09 16:45:59 by mal-guna         ###   ########.fr       */
+/*   Updated: 2022/04/25 11:41:48 by mal-guna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,21 @@ int	ft_reader(char **save, int fd, int n)
 
 char	*get_next_line(int fd)
 {
-	static char	*save[8192];
+	static char	*save;
 	int			index;
 	int			b;
 
 	b = 1;
 	if (fd < 0 || fd > 8192 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!save[fd])
-		save[fd] = ft_strdup("");
-	b = ft_reader(&save[fd], fd, b);
-	if (*save[fd] == '\0' && b <= 0)
+	if (!save)
+		save = ft_strdup("");
+	b = ft_reader(&save, fd, b);
+	if (*save == '\0' && b <= 0)
 	{
-		ft_free(&save[fd]);
+		ft_free(&save);
 		return (NULL);
 	}
-	index = nl_index(save[fd]);
-	return (ft_line(&save[fd], index + 1));
+	index = nl_index(save);
+	return (ft_line(&save, index + 1));
 }
